@@ -1,16 +1,18 @@
-import React from 'react';
-import { TOGGLE_TODO, CLEAR_TODO } from '../reducers/todoReducer';
+import React, { useReducer } from 'react';
+import { todoReducer, todos, TOGGLE_TODO, CLEAR_TODO } from '../reducers/todoReducer';
 
 const Todo = (props) => {
+    const [state, dispatch] = useReducer(todoReducer, todos);
+
 	return (
 		<div
 			onClick={() => {
                 dispatch({ type: TOGGLE_TODO });
                 dispatch({ type: CLEAR_TODO });
             }}
-			className={`todo${props.newTodo.completed ? ' completed' : ''}`}
+			className={`todo${todos.completed ? ' completed' : ''}`}
 		>
-			<p>{props.newTodo.item}</p>
+			<p>{todos.item}</p>
 		</div>
 	);
 };

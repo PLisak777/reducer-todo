@@ -2,7 +2,7 @@ export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const CLEAR_TODO = 'CLEAR_TODO';
 
-export const initialTodoState = [{
+export const todos = [{
     item: 'Learn about reducers',
     completed: false,
     id: 3892987589
@@ -18,8 +18,15 @@ export const todoReducer = (state, action) => {
                 completed: false
             }
         }
-    }
-    return (state);
-}
+        case TOGGLE_TODO: {
 
-export default todoReducer;
+        }
+        case CLEAR_TODO: {
+            return {
+                
+            }
+        }
+        default:
+            return state;
+    }
+}

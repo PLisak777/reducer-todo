@@ -1,12 +1,15 @@
-import React from 'react';
-import { CLEAR_TODO } from '../reducers/todoReducer';
+import React, { useReducer } from 'react';
+import { todoReducer, todos, CLEAR_TODO } from '../reducers/todoReducer';
 import Todo from './Todo';
 
 const TodoList = (props) => {
-    console.log(props.initialTodoState)
+    const [state, dispatch] = useReducer(todoReducer, todos);
+
+    console.log(todos)
+
 	return (
 		<div>
-			{props.todos.map((newTodo) => (
+			{todos.map((newTodo) => (
 				<Todo key={newTodo.id} newTodo={props.newTodo} />
 			))}
             <button 

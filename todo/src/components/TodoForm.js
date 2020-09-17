@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from 'react';
 import {
-	initialTodoState,
+	todos,
 	todoReducer,
 	ADD_TODO,
 	TOGGLE_TODO,
@@ -9,7 +9,9 @@ import {
 
 const TodoForm = () => {
 	const [newTodo, setNewTodo] = useState('');
-	const [state, dispatch] = useReducer(todoReducer, initialTodoState);
+    const [state, dispatch] = useReducer(todoReducer, todos);
+    
+    console.log('pl: TodoForm.js: TodoForm: reducer output: ', state);
 
 	const handleChange = (e) => {
 		setNewTodo(e.target.value);
