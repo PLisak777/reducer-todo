@@ -1,78 +1,60 @@
-import React from 'react';
+import React, { useState, useReducer } from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
 import './App.css';
 
-const todos = [
-	{
-		task: 'Todo 1',
-		id: 123,
-		completed: false,
-	},
-	{
-		task: 'Todo 2',
-		id: 124,
-		completed: false,
-	},
-	{
-		task: 'Todo 3',
-		id: 125,
-		completed: false,
-	},
-];
+const App = () => {
+	const [todos, setTodos] = useState([{
+item: 'Learn about reducers',
+  completed: false,
+  id: 3892987589
+    }])
 
-class App extends React.Component {
-	state = {
-		todos: todos,
-	};
+	const toggleTodo = (todoId) => {
+    setTodos({
+      todos: todos.map((todo) => {
+        if (todo.id === todoId) {
+          return {
+            ...todos,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    });
+  }
 
-	toggleTodo = (todoId) => {
-		this.setState({
-			todos: this.state.todos.map((todo) => {
-				if (todo.id === todoId) {
-					return {
-						...todos,
-						completed: !todo.completed,
-					};
-				}
-				return todo;
-			}),
-		});
-	};
-
-	addTodo = (todoName) => {
-		this.setState({
+	const addTodo = (todoName) => {
+		setTodos({
 			todos: [
-				...this.state.todos,
-				{ task: todoName, id: Date.now(), completed: false },
+				...todos,
+				{ item: todoName, id: Date.now(), completed: false },
 			],
 		});
 	};
 
-	clearTodos = () => {
-		this.setState({
-			todos: this.state.todos.filter((todo) => {
+	const clearTodos = () => {
+		setTodos({
+			todos: todos.filter((todo) => {
 				return !todo.completed;
 			}),
 		});
 	};
 
-	render() {
 		return (
 			<div className="App">
 				<div className="header">
 					<h2>Input Todos Here</h2>
-					<TodoForm addTodo={this.addTodo} />
+					<TodoForm addTodo={addTodo} />
 				</div>
 				<TodoList
-					todos={this.state.todos}
-					toggleTodo={this.toggleTodo}
-					clearTodos={this.clearTodos}
+					todos={todos}
+					toggleTodo={toggleTodo}
+					clearTodos={clearTodos}
 				/>
 			</div>
 		);
 	}
-}
 
 export default App;
