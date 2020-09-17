@@ -19,7 +19,10 @@ export const todoReducer = (state, action) => {
             }
         }
         case TOGGLE_TODO: {
-
+            return {
+                ...state,
+                completed: !state.completed
+            }
         }
         case CLEAR_TODO: {
             return {

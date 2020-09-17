@@ -13,7 +13,7 @@ const App = () => {
 				<h2>Input Todos Here</h2>
 			</div>
       <TodoForm />
-      <TodoList todos={todos} />
+      <TodoList />
 		</div>
 	);
 };

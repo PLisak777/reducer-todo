@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import { todoReducer, todos, TOGGLE_TODO, CLEAR_TODO } from '../reducers/todoReducer';
 
-const Todo = (props) => {
+const Todo = () => {
     const [state, dispatch] = useReducer(todoReducer, todos);
 
 	return (
