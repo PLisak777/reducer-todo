@@ -14,16 +14,13 @@ const TodoForm = () => {
     console.log('pl: TodoForm.js: TodoForm: reducer output: ', state);
 
 	const handleChange = (e) => {
-		setNewTodo(e.target.value);
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-        setNewTodo(newTodo);
+        e.preventDefault();
+        setNewTodo(e.target.value);
+        dispatch({ type: ADD_TODO, payload: newTodo });
 	};
 
 		return (
-			<form onSubmit={handleSubmit}>
+			<form>
 				<input
 					type="text"
 					name="todo"
@@ -31,9 +28,7 @@ const TodoForm = () => {
 					value={newTodo}
 					onChange={handleChange}
 				/>
-				<button onClick={() => {
-                    dispatch({ type: ADD_TODO, payload: newTodo })
-                }}>Add Todo</button>
+				<button onClick={handleChange}>Add Todo</button>
 			</form>
 		);
 	}

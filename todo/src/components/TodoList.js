@@ -5,7 +5,7 @@ import Todo from './Todo';
 const TodoList = () => {
     const [state, dispatch] = useReducer(todoReducer, todos);
 
-    console.log('pl: TodoList.js: TodoList: reducer output', state, todos)
+    console.log('pl: TodoList.js: TodoList: reducer output', todos)
 
 	return (
 		<div>

@@ -8,7 +8,7 @@ const Todo = () => {
 		<div
 			onClick={() => {
                 dispatch({ type: TOGGLE_TODO });
-                dispatch({ type: CLEAR_TODO });
+                // dispatch({ type: CLEAR_TODO });
             }}
 			className={`todo${todos.completed ? ' completed' : ''}`}
 		>

@@ -26,7 +26,7 @@ export const todoReducer = (state, action) => {
         }
         case CLEAR_TODO: {
             return {
-                
+                state: ''
             }
         }
         default:
