@@ -1,18 +1,20 @@
-import React, { useReducer } from 'react';
-import { todoReducer, todos, TOGGLE_TODO, CLEAR_TODO } from '../reducers/todoReducer';
+import React from 'react';
+import { TOGGLE_TODO } from '../reducers/todoReducer';
 
-const Todo = () => {
-    const [state, dispatch] = useReducer(todoReducer, todos);
-
+const Todo = (props) => {
 	return (
 		<div
 			onClick={() => {
-                dispatch({ type: TOGGLE_TODO });
-                // dispatch({ type: CLEAR_TODO });
-            }}
-			className={`todo${todos.completed ? ' completed' : ''}`}
+				props.dispatch({ type: TOGGLE_TODO, payload: props.newTodo.id });
+			}} // why did we add a payload here?
 		>
-			<p>{todos.item}</p>
+			<p
+				style={
+					props.newTodo.completed ? { textDecoration: 'line-through' } : null
+				}
+			>
+				{props.newTodo.item}
+			</p>
 		</div>
 	);
 };
